@@ -83,6 +83,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Object, function (sprite, otherS
     info.changeScoreBy(1)
     Jared.vy = -10
     Boost.setKind(SpriteKind.Object)
+    // Puts boost in front of Jared
     Boost.x += Math.randomRange(-35, 35)
     Boost.y += -5
 })
@@ -215,11 +216,13 @@ Boost = sprites.create(img`
 . . . . . 7 7 7 7 7 7 . . . . . 
 `, SpriteKind.Object)
 Boost.setPosition(80, 110)
+// starts countdown for lose condition
 info.startCountdown(8)
 scene.cameraFollowSprite(Jared)
 game.onUpdate(function () {
     Jared.x += controller.dx()
     if (info.score() == 15) {
+        // Adds win condition
         game.over(true, effects.confetti)
     }
 })
