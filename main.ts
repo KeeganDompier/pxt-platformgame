@@ -166,21 +166,21 @@ tiles.setTilemap(tiles.createTilemap(
         ))
 scene.setTile(13, img`
 d d d d d d d d d d d d d d d d 
-2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
 d d d d d d d d d d d d d d d d 
-2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
 d d d d d d d d d d d d d d d d 
-2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
 d d d d d d d d d d d d d d d d 
-2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
 d d d d d d d d d d d d d d d d 
-2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
 d d d d d d d d d d d d d d d d 
-2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
 d d d d d d d d d d d d d d d d 
-2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
 d d d d d d d d d d d d d d d d 
-2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+d d d d d d d d d d d d d d d d 
+d d d d d d d d d d d d d d d d 
+d d d d d d d d d d d d d d d d 
+d d d d d d d d d d d d d d d d 
+d d d d d d d d d d d d d d d d 
+d d d d d d d d d d d d d d d d 
+d d d d d d d d d d d d d d d d 
+d d d d d d d d d d d d d d d d 
 `, true)
 Jared = sprites.create(img`
 . . . . . . . . . . . . . . . . 
@@ -200,7 +200,7 @@ Jared = sprites.create(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `, SpriteKind.Player)
-scene.cameraFollowSprite(Jared)
+Jared.setPosition(80, 110)
 Jared.ay = 25
 Boost = sprites.create(img`
 . . . . . . 7 7 7 7 . . . . . . 
@@ -220,14 +220,11 @@ Boost = sprites.create(img`
 . . . . . 7 7 7 7 7 7 . . . . . 
 . . . . . 7 7 7 7 7 7 . . . . . 
 `, SpriteKind.Object)
-Jared.setPosition(80, 110)
 Boost.setPosition(80, 110)
 info.startCountdown(37.5)
+scene.cameraFollowSprite(Jared)
 game.onUpdate(function () {
     Jared.x += controller.dx()
-})
-// Adds win condition
-forever(function () {
     if (info.score() == 25) {
         game.over(true, effects.confetti)
     }
